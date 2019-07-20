@@ -6,10 +6,12 @@ from sklearn.manifold import TSNE
 
 plt.rcParams['font.family'] = 'IPAexGothic'
 # 学習したモデルのロード
-model = Word2Vec.load('jawiki_word2vec.bin')
+model = Word2Vec.load(sys.argv[1])
 
+# 気になる単語
 keyword = "料理"
-# 「砂糖」に近い単語を50個取得して視覚化を行う
+
+# keywordに近い単語を50個取得して視覚化を行う
 similarities = model.wv.most_similar(keyword, topn=50)
 words = [word for (word, score) in similarities]
 words.append(keyword)
@@ -29,4 +31,4 @@ for (word, x, y) in zip(words, x_coords, y_coords):
     plt.annotate(word, xy=(x, y), xytext=(5, -10), textcoords='offset points')
 
 # 散布図を書き出す
-plt.savefig('word2vec_visualization.png')
+plt.savefig(sys.argv[2])

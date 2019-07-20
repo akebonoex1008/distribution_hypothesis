@@ -1,0 +1,30 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+
+[packages]
+pandas = "*"
+numpy = "*"
+requests = "*"
+plotly = "*"
+sklearn = "*"
+mecab-python3 = "==0.7"
+rdflib = "*"
+gensim = "*"
+matplotlib = "*"
+torchtext = "*"
+torch = "*"
+torchvision = "*"
+jupyterlab = "*"
+flask = "*"
+openpyxl = "*"
+xlrd = "*"
+pydot = "*"
+lxml = "*"
+
+[requires]
+python_version = "3.7"
