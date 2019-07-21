@@ -37,8 +37,9 @@ https://qiita.com/katuemon/items/5c4db01997ad9dc343e0
 ---
 ---
 #### generate_corpus.py
----
 ###### DBpediaのnif_contextデータをtxtファイルに空白区切で分割するためのコード
+---
+
 
 DBpediaからwikipediaの本文テキストが含まれているNIF Contextデータをダウンロード
 
@@ -73,8 +74,9 @@ $ head -n1 jawiki_corpus.txt
 
 ---
 #### train.py
----
 ###### generate_corpus.pyで作ったコーパスからGensimを使って学習モデルを作成する。
+---
+
 
 ```
 
@@ -85,9 +87,11 @@ $ python train.py ja_wiki_corpus.txt ja_wiki_word2vec.bin
 
 ---
 #### visualize.py
+###### 学習したモデルであるbinファイルを使い、意味ベクトルを視覚化し、気になる単語に近い単語５０個を取得してプロットする
+
 ---
 
-###### 学習したモデルであるbinファイルを使い、意味ベクトルを視覚化し、気になる単語に近い単語５０個を取得してプロットする
+
 
 scikit-learnライブラリのt-SESアルゴリズムを用いて100次元ベクトルを２次元まで次元圧縮をする。
 
@@ -111,7 +115,7 @@ $ python visualize.py ja_wiki_word2vec.bin word2vec_visualizetion.png
 #### 事前準備
 
 
-### ※１　livedoorニュースコーパスのデータセットをダウンロード
+### １　livedoorニュースコーパスのデータセットをダウンロード
 
 ```
 $ wget https://www.rondhuit.com/download/ldcc-20140209.tar.gz
@@ -135,7 +139,7 @@ textというディレクトリが作成される。
 表のように９種の記事のサービス名を表すディレクトリにテキストファイルで記事が保存されます。
 
 
-### ※２　単語の意味ベクトルを読み込めるようにするため、学習したbinファイルをtxtファイル形式で保存し直す。
+### ２　単語の意味ベクトルを読み込めるようにするため、学習したbinファイルをtxtファイル形式で保存し直す。
 
 ```
 import gensim
@@ -197,8 +201,8 @@ epoch 50 batch_size 32 で学習。自分の結果は94.34%でした。
 
 ---
 #### similar_words.py
----
 ###### 類語検索アルゴリズム
+---
 
 入力した単語から意味が近い単語を検索する。
 今回は"飛行機"を検索しています。
@@ -216,9 +220,10 @@ $ python similar_words.py ja_wiki_word2vec.bin 飛行機
 
 ---
 #### word_analogy.py
+###### アナロジー推論アルゴリズム
 ---
 
-###### アナロジー推論アルゴリズム
+
 
 「パリ」＋「日本」ー「フランス」　＝　「東京」
 上記のように「東京」を予測するアルゴリズム
