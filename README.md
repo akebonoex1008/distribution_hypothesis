@@ -36,7 +36,7 @@ https://qiita.com/katuemon/items/5c4db01997ad9dc343e0
 ## 各コードの説明（上から順に、実行して欲しいコードになっています）
 ---
 ---
-#### generate_corpus.py
+### generate_corpus.py
 - DBpediaのnif_contextデータをtxtファイルに空白区切で分割するためのコード
 ---
 
@@ -73,7 +73,7 @@ $ head -n1 jawiki_corpus.txt
 
 
 ---
-#### train.py
+### train.py
 - generate_corpus.pyで作ったコーパスからGensimを使って学習モデルを作成する。
 ---
 
@@ -86,7 +86,7 @@ $ python train.py ja_wiki_corpus.txt ja_wiki_word2vec.bin
 **4~5時間かかりました。**
 
 ---
-#### visualize.py
+### visualize.py
 - 学習したモデルであるbinファイルを使い、意味ベクトルを視覚化し、気になる単語に近い単語５０個を取得してプロットする
 
 ---
@@ -201,7 +201,7 @@ epoch 50 batch_size 32 で学習。自分の結果は94.34%でした。
 
 
 ---
-#### similar_words.py
+### similar_words.py
 - 類語検索アルゴリズム
 ---
 
@@ -220,7 +220,7 @@ $ python similar_words.py ja_wiki_word2vec.bin 飛行機
 ```
 
 ---
-#### word_analogy.py
+### word_analogy.py
 - アナロジー推論アルゴリズム
 ---
 
