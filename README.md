@@ -27,7 +27,7 @@
 
 
 
-※３　visualize.pyで意味ベクトルを視覚化するためにimport matplotlib.pyplot as pltと**matplotlib**を使用していますが、デフォルトでは日本語に対応していないため、そのまま実行すると日本語が描画される部分が◻︎◻︎◻︎...と**文字化け**を起こします。
+※３　visualize.pyで意味ベクトルを視覚化するためにimport **matplotlib**.pyplot as pltと**matplotlib**を使用していますが、デフォルトでは日本語に対応していないため、そのまま実行すると日本語が描画される部分が◻︎◻︎◻︎...と**文字化け**を起こします。
 下記のURLを参考に自分は解決したのでよろしくお願いします。
 https://qiita.com/katuemon/items/5c4db01997ad9dc343e0
 
