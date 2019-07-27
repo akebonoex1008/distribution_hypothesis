@@ -41,6 +41,9 @@ https://qiita.com/katuemon/items/5c4db01997ad9dc343e0
 ###### DBpediaのnif_contextデータをtxtファイルに空白区切で分割するためのコード
 
 DBpediaからwikipediaの本文テキストが含まれているNIF Contextデータをダウンロード
+※もし下記のコマンドが実行できなかった場合、https://wiki.dbpedia.org/develop/datasets/downloads-2016-10#dataids
+
+からnif_context_ja_ttl.bz2を直接ダウンロードしてださい。
 
 ```
 
