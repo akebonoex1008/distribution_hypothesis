@@ -27,7 +27,7 @@
 
 
 
-※３　visualize.pyで意味ベクトルを視覚化するためにimport matplotlib.pyplot as pltと**matplotlib**を使用していますが、デフォルトでは日本語に対応していないため、そのまま実行すると日本語が描画される部分が◻︎◻︎◻︎...と**文字化け**を起こします。
+※３　visualize.pyで意味ベクトルを視覚化するためにimport **matplotlib**.pyplot as pltと**matplotlib**を使用していますが、デフォルトでは日本語に対応していないため、そのまま実行すると日本語が描画される部分が◻︎◻︎◻︎...と**文字化け**を起こします。
 下記のURLを参考に自分は解決したのでよろしくお願いします。
 https://qiita.com/katuemon/items/5c4db01997ad9dc343e0
 
@@ -36,9 +36,10 @@ https://qiita.com/katuemon/items/5c4db01997ad9dc343e0
 ## 各コードの説明（上から順に、実行して欲しいコードになっています）
 ---
 ---
-#### generate_corpus.py
+### generate_corpus.py
+- DBpediaのnif_contextデータをtxtファイルに空白区切で分割するためのコード
 ---
-###### DBpediaのnif_contextデータをtxtファイルに空白区切で分割するためのコード
+
 
 DBpediaからwikipediaの本文テキストが含まれているNIF Contextデータをダウンロード
 ※もし下記のコマンドが実行できなかった場合、https://wiki.dbpedia.org/develop/datasets/downloads-2016-10#dataids
@@ -75,9 +76,10 @@ $ head -n1 jawiki_corpus.txt
 
 
 ---
-#### train.py
+### train.py
+- generate_corpus.pyで作ったコーパスからGensimを使って学習モデルを作成する。
 ---
-###### generate_corpus.pyで作ったコーパスからGensimを使って学習モデルを作成する。
+
 
 ```
 
@@ -87,10 +89,12 @@ $ python train.py ja_wiki_corpus.txt ja_wiki_word2vec.bin
 **4~5時間かかりました。**
 
 ---
-#### visualize.py
+### visualize.py
+- 学習したモデルであるbinファイルを使い、意味ベクトルを視覚化し、気になる単語に近い単語５０個を取得してプロットする
+
 ---
 
-###### 学習したモデルであるbinファイルを使い、意味ベクトルを視覚化し、気になる単語に近い単語５０個を取得してプロットする
+
 
 scikit-learnライブラリのt-SESアルゴリズムを用いて100次元ベクトルを２次元まで次元圧縮をする。
 
@@ -114,7 +118,7 @@ $ python visualize.py ja_wiki_word2vec.bin word2vec_visualizetion.png
 #### 事前準備
 
 
-### ※１　livedoorニュースコーパスのデータセットをダウンロード
+### １　livedoorニュースコーパスのデータセットをダウンロード
 
 ```
 $ wget https://www.rondhuit.com/download/ldcc-20140209.tar.gz
@@ -138,7 +142,7 @@ textというディレクトリが作成される。
 表のように９種の記事のサービス名を表すディレクトリにテキストファイルで記事が保存されます。
 
 
-### ※２　単語の意味ベクトルを読み込めるようにするため、学習したbinファイルをtxtファイル形式で保存し直す。
+### ２　単語の意味ベクトルを読み込めるようにするため、学習したbinファイルをtxtファイル形式で保存し直す。
 
 ```
 import gensim
@@ -150,23 +154,24 @@ model.wv.save_word2vec_format('ja_wiki_word2vec.txt')
 ### コードの説明
 ---
 ---
-#### dataset.py
+### dataset.py
+- データセットの読み込みと前処理を行う
 ---
-#### データセットの読み込みと前処理を行う
 
 nbow_trainでインポートします。
 
 ---
 ### nbow_model.py
+- Neural Bag-of-Wordsモデルを定義する。
 ---
-#### Neural Bag-of-Wordsモデルを定義する。
 
 nbow_trainでインポートします。
 
 ---
 ### nbow_train.py
+- モデルの訓練とテストを行う
 ---
-#### モデルの訓練とテストを行う
+
 
 ファイルを実行。
 
@@ -199,9 +204,9 @@ epoch 50 batch_size 32 で学習。自分の結果は94.34%でした。
 
 
 ---
-#### similar_words.py
+### similar_words.py
+- 類語検索アルゴリズム
 ---
-###### 類語検索アルゴリズム
 
 入力した単語から意味が近い単語を検索する。
 今回は"飛行機"を検索しています。
@@ -218,10 +223,11 @@ $ python similar_words.py ja_wiki_word2vec.bin 飛行機
 ```
 
 ---
-#### word_analogy.py
+### word_analogy.py
+- アナロジー推論アルゴリズム
 ---
 
-###### アナロジー推論アルゴリズム
+
 
 「パリ」＋「日本」ー「フランス」　＝　「東京」
 上記のように「東京」を予測するアルゴリズム
